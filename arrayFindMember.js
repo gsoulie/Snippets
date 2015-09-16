@@ -3,11 +3,6 @@
  * note : you can find similar functions in underscoreJS lib or JQuery but it can be more light to import this only function to your project
  */
 
-Les paramètres sont les suivants :
-_searchID : Valeur recherchée
-_myArray : Nom du tableau
-_rubID : Nom de la rubrique portant la recherche
-Valeur de sortie : Première position trouvée ou -1 si aucun résultat correspondant
 /**
  *@param{String}    _searchID : value to find
  *@param{String}    _myArray : array
