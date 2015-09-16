@@ -1,3 +1,3 @@
 # Snippets
 
-You'll find here a personnal collection of snippet code for Appcelerator Titanium projects
+You'll find here a personnal collection of snippets for Appcelerator Titanium projects
