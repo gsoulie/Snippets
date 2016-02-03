@@ -1,0 +1,238 @@
+/**
+ *  Widget for scrollableView used as tutorial frame
+ */
+ 
+ 
+ /**
+  * View file
+  */
+  
+  <Alloy>
+	<Window id="tutorial">
+		<ScrollableView id="container"/>
+		<View id="pagingControl">
+			<Button id="skip" backgroundColor="transparent" title="PASSER"/>
+			<View id="dotView"/>
+			<Button id="done" title="SUIVANT" backgroundColor="transparent"/>
+		</View>
+	</Window>
+</Alloy>
+
+/**
+ * Controller file
+ */
+ 
+ var pageCount = 0;
+/**
+ * 
+ * @param {String}  _args.backgroundColor
+ * @param {String}  _args.fontColor
+ * @param {Array}   _args.content : liste des views à ajouter dans la scrollableView
+ */
+exports.init = function(_args){
+    $.tutorial.backgroundColor = _args.backgroundColor || "#ffffff";
+    $.pagingControl.backgroundColor = _args.backgroundColor || "#000000";
+    $.container.removeAllChildren();
+    $.dotView.removeAllChildren();
+    
+    pageCount = _args.content ? _args.content.length : 0;
+    
+    if(_args.content){
+        $.container.setViews(_args.content);    // peuplement de la scrollableView
+        
+        // Création du paging control
+        for(var i = 0; i < pageCount; i++){
+            var dot = Ti.UI.createLabel({
+               id: "dot"+i,
+               text: i == 0 ? Alloy.CFG.icon.enableDot : Alloy.CFG.icon.disableDot 
+            });
+            
+            $.resetClass(dot,'dot');
+            $.dotView.add(dot);
+        }
+    }
+};
+
+exports.open = function(){
+    $.tutorial.open();
+    $.container.setCurrentPage = 0;
+    refreshPagingControl(0);
+};
+
+exports.close = function(){$.tutorial.close();};
+
+/**
+ * Refreshing the paging control
+ * @param {Object} index
+ */
+function refreshPagingControl(index){
+    var dots = $.dotView.getChildren();
+    
+    for(var i = 0; i < dots.length; i++){
+        if(index == i){
+            dots[i].text = Alloy.CFG.icon.enableDot;
+        } else {
+            dots[i].text = Alloy.CFG.icon.disableDot;
+        }        
+    }
+    
+    if(index == dots.length-1){
+        $.done.title = "TERMINER";
+        $.skip.visible = false;
+    } else {
+        $.done.title = "SUIVANT";
+        $.skip.visible = true;
+    }     
+};
+
+// open event
+$.tutorial.addEventListener('open', function(){
+    if(OS_ANDROID){
+        $.tutorial.activity.actionBar.displayHomeAsUp = false;
+        $.tutorial.activity.actionBar.icon = "";
+        $.tutorial.activity.actionBar.logo = "";
+        $.tutorial.activity.actionBar.title = "";
+    }
+});
+
+// scrollend event
+$.container.addEventListener('scrollend', function(e){refreshPagingControl(e.source.currentPage);});
+
+// Clic on skip button
+$.skip.addEventListener('click', function(){$.tutorial.close();});
+
+// Clic on done button
+$.done.addEventListener('click', function(){
+    var children = $.container.getViews();
+    
+    if(children.length > 0){
+        
+        // Page courante n'est pas la dernière page ?
+        if($.container.currentPage != children.length-1){
+            // Non, on scroll à la suivante
+            $.container.moveNext();
+            refreshPagingControl($.container.currentPage);
+        } else {
+            // dernière page, on ferme
+            $.tutorial.close();
+        }
+    } else {
+        $.tutorial.close();
+    }
+});
+
+// Cleaning method
+$.cleanup = function cleanup() {
+    $.destroy();
+    $.off();
+};
+
+$.tutorial.addEventListener('close', $.cleanup);
+
+
+/**
+ * Style file
+ */
+ "Window": {
+	orientationModes: [Titanium.UI.PORTRAIT,Titanium.UI.UPSIDE_PORTRAIT]
+}
+"#container": {
+	width: Ti.UI.FILL,
+	top: 0,
+	bottom: 40
+}
+".tutorialView": {
+	width: Ti.UI.FILL,
+	top: 0
+}
+"#pagingControl": {
+	bottom: 0,
+	height: 40,
+	width: Ti.UI.FILL
+}
+"#dotView": {
+	height: Ti.UI.FILL,
+	width: Ti.UI.SIZE,
+	layout: "horizontal"
+}
+".dot": {
+	//backgroundColor: "#fff",
+	top: 10,
+	height: 20,
+	width: 15,
+	left: 5,
+	right: 5,
+	font: {
+		fontFamily: "symbol",
+		fontSize: "12sp"
+	},
+	color: "#ffffff"
+}
+"#skip": {
+	left: 15,
+	height: Ti.UI.FILL,
+	color: "#ffffff",
+	font: {
+		fontSize: "12sp"
+	}
+}
+
+"#done": {
+	right: 15,
+	height: Ti.UI.FILL,
+	color: "#ffffff",
+	font: {
+		fontSize: "12sp"
+	}
+}
+
+
+
+/**
+ * Using from another controller
+ */
+ 
+ <Alloy>
+	<Window width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" fullscreen="true"/>
+	<Widget src="com.isiapps.tutorialframe" id="tutorial"/>
+</Alloy>
+
+
+ var page1 = Ti.UI.createView({
+        height: Ti.UI.FILL,
+        width: Ti.UI.FILL,
+        backgroundColor: "#ffcc00"
+    });
+    var labelPage1 = Ti.UI.createLabel({text:"Page 1"});
+    page1.add(labelPage1);
+    
+    var page2 = Ti.UI.createView({
+        height: Ti.UI.FILL,
+        width: Ti.UI.FILL,
+        backgroundColor: "#22cc11"
+    });
+    var labelPage2 = Ti.UI.createLabel({text:"Page 2"});
+    page2.add(labelPage2);
+    
+    var page3 = Ti.UI.createView({
+        height: Ti.UI.FILL,
+        width: Ti.UI.FILL,
+        backgroundColor: "#aa33cc"
+    });
+    var labelPage3 = Ti.UI.createLabel({text:"Page 3"});
+    page3.add(labelPage3);
+    
+    var page4 = Ti.UI.createView({
+        height: Ti.UI.FILL,
+        width: Ti.UI.FILL,
+        backgroundColor: "#e5b4f2"
+    });
+    var labelPage4 = Ti.UI.createLabel({text:"Page 4"});
+    page4.add(labelPage4);
+    
+    $.tutorial.init({
+       content: [page1,page2,page3,page4] 
+    });
+    
+    $.tutorial.open();
+ 
