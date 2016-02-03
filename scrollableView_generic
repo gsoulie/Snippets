@@ -22,25 +22,35 @@
  * Controller file
  */
  
- var pageCount = 0;
+var pageCount = 0,
+    nextButtonTitle = "NEXT",
+    doneButtonTitle = "DONE";
 /**
  * 
- * @param {String}  _args.backgroundColor
+ * @param {String}  _args.pagingControlBackground : background color of Paging control view
+ * @param {String}  _args.backgroundColor : background color of main window
  * @param {String}  _args.fontColor
- * @param {Array}   _args.content : liste des views à ajouter dans la scrollableView
+ * @param {Array}   _args.content : array which content child views to add in the scrollableView
+ * @param {String}  _args.skipButtonTitle : title of skip button (on the left of paging control)
+ * @param {String}  _args.doneButtonTitle : title of done button (on the right of the paging control)
+ * @param {String}  _args.nextButtonTitle : title of next button (second title of done button when current page is not the last)
  */
 exports.init = function(_args){
     $.tutorial.backgroundColor = _args.backgroundColor || "#ffffff";
-    $.pagingControl.backgroundColor = _args.backgroundColor || "#000000";
+    $.pagingControl.backgroundColor = _args.pagingControlBackground || "#000000";
     $.container.removeAllChildren();
     $.dotView.removeAllChildren();
+    
+    nextButtonTitle = _args.nextButtonTitle || "NEXT";
+    doneButtonTitle = _args.doneButtonTitle || "DONE";
+    $.skip.title = _args.skipButtonTitle || "SKIP";
     
     pageCount = _args.content ? _args.content.length : 0;
     
     if(_args.content){
-        $.container.setViews(_args.content);    // peuplement de la scrollableView
+        $.container.setViews(_args.content);    // add views to scrollable view
         
-        // Création du paging control
+        // Create dot in paging control
         for(var i = 0; i < pageCount; i++){
             var dot = Ti.UI.createLabel({
                id: "dot"+i,
@@ -77,10 +87,10 @@ function refreshPagingControl(index){
     }
     
     if(index == dots.length-1){
-        $.done.title = "TERMINER";
+        $.done.title = doneButtonTitle;
         $.skip.visible = false;
     } else {
-        $.done.title = "SUIVANT";
+        $.done.title = nextButtonTitle;
         $.skip.visible = true;
     }     
 };
@@ -107,13 +117,13 @@ $.done.addEventListener('click', function(){
     
     if(children.length > 0){
         
-        // Page courante n'est pas la dernière page ?
+        // Current page is the last of scrollable view ?
         if($.container.currentPage != children.length-1){
-            // Non, on scroll à la suivante
+            // No, move to the next
             $.container.moveNext();
             refreshPagingControl($.container.currentPage);
         } else {
-            // dernière page, on ferme
+            // last page, close controller
             $.tutorial.close();
         }
     } else {
@@ -128,6 +138,7 @@ $.cleanup = function cleanup() {
 };
 
 $.tutorial.addEventListener('close', $.cleanup);
+
 
 
 /**
