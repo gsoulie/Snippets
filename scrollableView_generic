@@ -98,6 +98,7 @@ function refreshPagingControl(index){
 // open event
 $.tutorial.addEventListener('open', function(){
     if(OS_ANDROID){
+    	$.tutorial.activity.actionBar.hide();
         $.tutorial.activity.actionBar.displayHomeAsUp = false;
         $.tutorial.activity.actionBar.icon = "";
         $.tutorial.activity.actionBar.logo = "";
