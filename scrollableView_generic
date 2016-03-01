@@ -7,13 +7,26 @@
   * View file
   */
   
-  <Alloy>
-	<Window id="tutorial">
+<Alloy>
+	<!-- iOS -->
+	<NavigationWindow platform="ios">
+		<Window id="tutorial">
+			<ScrollableView id="container"/>
+			<View id="pagingControl">
+				<Button id="skip" backgroundColor="transparent" title="SKIP"/>
+				<View id="dotView"/>
+				<Button id="done" title="NEXT" backgroundColor="transparent"/>
+			</View>
+		</Window>
+	</NavigationWindow>
+	
+	<!-- Android -->
+	<Window id="tutorial" platform="android">
 		<ScrollableView id="container"/>
 		<View id="pagingControl">
-			<Button id="skip" backgroundColor="transparent" title="PASSER"/>
+			<Button id="skip" backgroundColor="transparent" title="SKIP"/>
 			<View id="dotView"/>
-			<Button id="done" title="SUIVANT" backgroundColor="transparent"/>
+			<Button id="done" title="NEXT" backgroundColor="transparent"/>
 		</View>
 	</Window>
 </Alloy>
@@ -24,20 +37,22 @@
  
 var pageCount = 0,
     nextButtonTitle = "NEXT",
-    doneButtonTitle = "DONE";
+    doneButtonTitle = "DONE",
+    closeCallback;
 /**
  * 
- * @param {String}  _args.pagingControlBackground : background color of Paging control view
- * @param {String}  _args.backgroundColor : background color of main window
+ * @param {String}  _args.pagingControlBackground :
+ * @param {String}  _args.backgroundColor : 
  * @param {String}  _args.fontColor
- * @param {Array}   _args.content : array which content child views to add in the scrollableView
- * @param {String}  _args.skipButtonTitle : title of skip button (on the left of paging control)
- * @param {String}  _args.doneButtonTitle : title of done button (on the right of the paging control)
- * @param {String}  _args.nextButtonTitle : title of next button (second title of done button when current page is not the last)
+ * @param {Array}   _args.content : views to add to the scrollableView
+ * @param {String}  _args.skipButtonTitle : 
+ * @param {String}  _args.doneButtonTitle : 
+ * @param {String}  _args.nextButtonTitle : 
+ * @param {Function}_args.closeCallback : callback function play on done, skip buttons
  */
 exports.init = function(_args){
     $.tutorial.backgroundColor = _args.backgroundColor || "#ffffff";
-    $.pagingControl.backgroundColor = _args.pagingControlBackground || "#000000";
+    $.pagingControl.backgroundColor = "#00adef";
     $.container.removeAllChildren();
     $.dotView.removeAllChildren();
     
@@ -46,15 +61,16 @@ exports.init = function(_args){
     $.skip.title = _args.skipButtonTitle || "SKIP";
     
     pageCount = _args.content ? _args.content.length : 0;
+    closeCallback = _args.closeCallback || function(){};
     
     if(_args.content){
-        $.container.setViews(_args.content);    // add views to scrollable view
+        $.container.setViews(_args.content);    
         
-        // Create dot in paging control
+        // Création du paging control
         for(var i = 0; i < pageCount; i++){
             var dot = Ti.UI.createLabel({
                id: "dot"+i,
-               text: i == 0 ? Alloy.CFG.icon.enableDot : Alloy.CFG.icon.disableDot 
+               text: Alloy.CFG.icons.enableDot	// using custom font with plain dot character
             });
             
             $.resetClass(dot,'dot');
@@ -72,7 +88,7 @@ exports.open = function(){
 exports.close = function(){$.tutorial.close();};
 
 /**
- * Refreshing the paging control
+ * pagingControl Refresh switch active page
  * @param {Object} index
  */
 function refreshPagingControl(index){
@@ -80,14 +96,19 @@ function refreshPagingControl(index){
     
     for(var i = 0; i < dots.length; i++){
         if(index == i){
-            dots[i].text = Alloy.CFG.icon.enableDot;
+            //dots[i].text = Alloy.CFG.icons.enableDot;
+            dots[i].color = "#FFFFFF";
         } else {
-            dots[i].text = Alloy.CFG.icon.disableDot;
+            //dots[i].text = Alloy.CFG.icons.disableDot;
+            dots[i].color = "#008cc1";
         }        
     }
     
+    // button title switch index
     if(index == dots.length-1){
+        // last page
         $.done.title = doneButtonTitle;
+        $.done.width = Ti.UI.SIZE;
         $.skip.visible = false;
     } else {
         $.done.title = nextButtonTitle;
@@ -98,7 +119,7 @@ function refreshPagingControl(index){
 // open event
 $.tutorial.addEventListener('open', function(){
     if(OS_ANDROID){
-    	$.tutorial.activity.actionBar.hide();
+        $.tutorial.activity.actionBar.hide();
         $.tutorial.activity.actionBar.displayHomeAsUp = false;
         $.tutorial.activity.actionBar.icon = "";
         $.tutorial.activity.actionBar.logo = "";
@@ -109,25 +130,38 @@ $.tutorial.addEventListener('open', function(){
 // scrollend event
 $.container.addEventListener('scrollend', function(e){refreshPagingControl(e.source.currentPage);});
 
-// Clic on skip button
-$.skip.addEventListener('click', function(){$.tutorial.close();});
+// clic on skip button
+$.skip.addEventListener('click', function(){
+    if(closeCallback){closeCallback();}
+    $.tutorial.close();
+});
 
-// Clic on done button
+// backbutton event Android only
+if(OS_ANDROID){
+    $.tutorial.addEventListener('androidback', function(){
+        if(closeCallback){closeCallback();}
+        $.tutorial.close();
+    });
+}
+
+// clic on done button
 $.done.addEventListener('click', function(){
     var children = $.container.getViews();
     
     if(children.length > 0){
         
-        // Current page is the last of scrollable view ?
+        // current page is the last ?
         if($.container.currentPage != children.length-1){
-            // No, move to the next
+            // No, scrolling next
             $.container.moveNext();
             refreshPagingControl($.container.currentPage);
         } else {
-            // last page, close controller
+            // last page, close widget
+            if(closeCallback){closeCallback();}
             $.tutorial.close();
         }
     } else {
+        if(closeCallback){closeCallback();}
         $.tutorial.close();
     }
 });
@@ -142,12 +176,16 @@ $.tutorial.addEventListener('close', $.cleanup);
 
 
 
+
 /**
  * Style file
  */
+ 
  "Window": {
+	backgroundColor: Alloy.Globals.grey,
 	orientationModes: [Titanium.UI.PORTRAIT,Titanium.UI.UPSIDE_PORTRAIT]
 }
+
 "#container": {
 	width: Ti.UI.FILL,
 	top: 0,
@@ -168,35 +206,35 @@ $.tutorial.addEventListener('close', $.cleanup);
 	layout: "horizontal"
 }
 ".dot": {
-	//backgroundColor: "#fff",
 	top: 10,
 	height: 20,
 	width: 15,
-	left: 5,
-	right: 5,
+	left: 2,
+	right: 2,
 	font: {
-		fontFamily: "symbol",
-		fontSize: "12sp"
+		fontFamily: "vega_symbol",	// custom font provide plain dot character
+		fontSize: "10sp"
 	},
 	color: "#ffffff"
 }
 "#skip": {
-	left: 15,
+	left: 10,
 	height: Ti.UI.FILL,
 	color: "#ffffff",
 	font: {
-		fontSize: "12sp"
+		fontSize: "11sp"
 	}
 }
 
 "#done": {
-	right: 15,
+	right: 10,
 	height: Ti.UI.FILL,
 	color: "#ffffff",
 	font: {
-		fontSize: "12sp"
+		fontSize: "11sp"
 	}
 }
+
 
 
 
