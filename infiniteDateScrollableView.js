@@ -116,3 +116,164 @@ loadView(containers[2], new Date(currentDate.getTime() + msIntervalBetweenViews)
  * That's it, we just need to open the window! Hope you enjoyed this.
  */
 win.open();
+
+
+
+
+
+
+/*******************************************************************
+ * Sample from project
+ **/
+ 
+var position = 0, items = [];
+
+var currentDate = new Date(), msIntervalBetweenViews = 1000/*ms*/ * 60/*s*/ * 60/*m*/ * 24/*h*/;
+Ti.App.Properties.setString('rdvSelectedDate',Moment(currentDate).format("YYYYMMDD"));	// Maj de la properties contenant la date sélectionnée
+
+var currentDateLabel, previousDateLabel, nextDateLabel, containers;
+
+
+function init(){
+    position = 0;
+    items = [];
+
+    currentDate = new Date(), msIntervalBetweenViews = 1000/*ms*/ * 60/*s*/ * 60/*m*/ * 24/*h*/;
+    Ti.App.Properties.setString('rdvSelectedDate',Moment(currentDate).format("YYYYMMDD")); 
+
+    // Current date view
+    currentDateLabel = Ti.UI.createView({width: Ti.UI.FILL,height: Ti.UI.FILL});
+    
+    // previous date view
+    previousDateLabel = Ti.UI.createView({width: Ti.UI.FILL,height: Ti.UI.FILL});
+    
+    // next date view
+    nextDateLabel = Ti.UI.createView({width: Ti.UI.FILL,height: Ti.UI.FILL});
+    
+    // Initial content of ScrollableView
+    containers = [previousDateLabel,currentDateLabel,nextDateLabel];
+
+    $.dateScrollableView.setViews(containers);
+    $.dateScrollableView.currentPage = 1;
+    
+    loadView(containers[0], Moment(new Date(currentDate.getTime() - msIntervalBetweenViews)).format("ddd D MMMM YYYY"));
+    loadView(containers[1], Moment(currentDate).format("ddd D MMMM YYYY"));
+    loadView(containers[2], Moment(new Date(currentDate.getTime() + msIntervalBetweenViews)).format("ddd D MMMM YYYY"));
+
+    Ti.App.refreshCallback = function(){
+        // do some stuff here
+    };  
+};
+
+
+/**
+ * Create current view label
+ * 
+ * @param {Object} 	view : current view
+ * @param {date}	date : date to add
+ */
+function loadView(view, date) {
+    // clear content
+    if(view.children) {
+        for (var c = view.children.length - 1; c >= 0; c--) {
+            view.remove(view.children[c]);
+        }
+    }
+    
+    // Add new label
+    var label = createDateView(date);
+    view.add(label);
+};
+
+/**
+ * Create date label
+ * 
+ * @param {String} _date : date to display
+ */
+function createDateView(_date){
+    var dateLabel = Ti.UI.createLabel({
+        width: Ti.UI.FILL,
+        height: Ti.UI.FILL,
+        font: {
+            fontSize: '16sp',
+            fontFamily: 'OpenSans-Regular'
+        },
+        color: "#000",
+        text: _date,
+        textAlign: 'center'
+    });
+    return dateLabel;
+};
+
+/**
+ * Evenement scroll sur la zone de date
+ * 
+ * @param {Object}	evt : évenement
+ */
+function scrollListener(evt) {
+	$.dateScrollableView.setBackgroundColor("transparent");	// background color reset
+	
+    //switch current page index
+    switch (evt.currentPage) {
+        case 0: // left scrolling
+        	
+            // positionning on the first position
+            containers.unshift(containers.pop());
+            if (OS_ANDROID) {
+                // temporary remove scrollend event (usefull for Android)
+                $.dateScrollableView.removeEventListener('scrollend', scrollListener);
+            } else {
+                $.dateScrollableView.setViews(containers);
+            }
+            // positionning on the middle view
+            $.dateScrollableView.currentPage = 1;
+            
+            if (OS_ANDROID) {
+                $.dateScrollableView.setViews(containers);
+                // re-add scrollend event
+                $.dateScrollableView.addEventListener('scrollend', scrollListener);
+            }
+           
+          	// update current date -1 day
+            currentDate.setDate(currentDate.getDate() - 1);
+            // and now buffer load the view we reset
+            loadView(containers[0], Moment(new Date(currentDate.getTime() - msIntervalBetweenViews)).format("ddd D MMMM YYYY",'fr'));
+            
+            break;
+        case 1:
+            break;
+            
+        case 2: // right scrolling
+            // move the first view to put it at the end of the stack
+            containers.push(containers.shift());
+            if (OS_ANDROID) {
+                // temporary remove scrollend event (usefull for android)
+                $.dateScrollableView.removeEventListener('scrollend', scrollListener);
+            } else {
+                
+                $.dateScrollableView.setViews(containers);
+            }
+            // positionning on the middle view
+            $.dateScrollableView.currentPage = 1;
+            
+            if (OS_ANDROID) {
+                $.dateScrollableView.setViews(containers);
+                // re-add scrollend event
+                $.dateScrollableView.addEventListener('scrollend', scrollListener);
+            }
+            
+           	// current date +1 day
+            currentDate.setDate(currentDate.getDate() + 1);
+            
+            // and now buffer load the view we reset
+            loadView(containers[2], Moment(new Date(currentDate.getTime() + msIntervalBetweenViews)).format("ddd D MMMM YYYY",'fr'));
+            
+            break;
+    }
+    
+    Ti.App.Properties.setString('rdvSelectedDate',Moment(currentDate).format("YYYYMMDD"));
+    
+    RefreshDataSet();
+};
+$.dateScrollableView.addEventListener('scrollend', scrollListener);
+
