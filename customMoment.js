@@ -56,7 +56,7 @@ Alloy.Globals.MomentLocaleFR= {
 
 // Next you can use it in your controllers as :
 var Moment = require('alloy/moment');
-Moment.lang('fr',Alloy.Globals.MomentLocaleFR);
+Moment.locale('fr',Alloy.Globals.MomentLocaleFR);
 
 var myDate = Moment().format("dddd D MMMM YYYY"); // display Lundi 1 Septembre 2014
 
