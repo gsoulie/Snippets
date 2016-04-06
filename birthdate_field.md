@@ -1,11 +1,7 @@
-/**
- * Snippet to create birthdate field
- */
- 
-/*
- * View xml file
- */
-  
+##Snippet for creating birthdate field
+
+####View file
+```
 <View class="lineView" id="birthdateView">
 	<Label class="standardLabel">Né(e) le</Label>
 	<View layout="horizontal" right="5" width="Ti.UI.SIZE">
@@ -16,12 +12,10 @@
 		<TextField id="year" class="birthday" hintText="AAAA" maxLength="4"/>
 	</View>
 </View>
+```
 
-
-/*
- * Style tss file
- */
- 
+####Style tss file
+```
 ".birthday": {
 	backgroundColor:"#ffffff",
 	width:Ti.UI.SIZE,
@@ -34,12 +28,11 @@
 		fontSize: "16sp"
 	}
 }
+```
 
+####Controller file
 
-/*
- * Controller js file
- */
-
+```
 $.day.addEventListener('focus', function(e){$.day.setSelection(0,0); });
 $.day.addEventListener('change', function(e){
     Ti.API.info("SELECTION",e.source.getSelection().length + " / " + e.source.getSelection().location);
@@ -61,3 +54,4 @@ $.year.addEventListener('focus', function(e){$.year.setSelection(0,0);});
 
 // Get the value to save it in database 
 // var dateNaissance = $.day.value !== "" && $.month.value !== "" && $.year.value !== "" ? Moment($.day.value+$.month.value+$.year.value,"DDMMYYYY").format("YYYYMMDD") : "",
+```
