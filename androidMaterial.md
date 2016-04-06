@@ -6,7 +6,8 @@ Note that using material design is available since Android 5.0. To use it, follo
 - Target Android SDK 5.0 (API 21) in your tiapp.xml file
 - Create custom theme from native AppCompat theme
 
-tiapp.xml configuration
+**tiapp.xml configuration**
+```
 ...
 <android xmlns:android="http://schemas.android.com/apk/res/android">
       <manifest>
@@ -16,11 +17,13 @@ tiapp.xml configuration
        </manifest>
 </android>
 ...
+```
 
-Custom theme creation :
+**Custom theme creation**
 
 First, create monTheme.xml file in /platform/android/res/ folder of your project. Now let's create custom theme with this file like this example :
 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <style name="monTheme" parent="@style/Theme.AppCompat">
@@ -78,25 +81,26 @@ First, create monTheme.xml file in /platform/android/res/ folder of your project
           <item name="android:headerBackground">@color/mainColor</item>
 </style>
 </resources>
+```
 
+**Warning**
 
-Warning
-
-colorAccent and colorControlActivated properties can't be both used. In this case, colorControlActivated override colorAccent property. 
+**colorAccent** and **colorControlActivated** properties can't be both used. In this case, **colorControlActivated** override **colorAccent** property. 
 This, create impact on current tab underline color, searchbar color, loading color and focused field.
 
 To avoid this issue, you need to proceed as :
 
-1 - Define colorControlActivated (for the switchs style)
+**1 - Define colorControlActivated (for the switchs style)**
 
-2 - Don't define colorAccent property in the android xml theme file
+**2 - Don't define colorAccent property in the android xml theme file**
 
-3 - Create new xml theme file to override tabGroup style
+**3 - Create new xml theme file to override tabGroup style**
 
 Create new xml file (like tab_bar_barckground.xml) in platform/android/res/drawable folder of your project
 
 Fill the xml file like below :
 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
          <item android:drawable="@android:color/transparent" android:state_focused="false" android:state_pressed="false" android:state_selected="false"/>
@@ -116,9 +120,11 @@ Fill the xml file like below :
                 </layer-list>
         </item>
 </selector>
+```
 
-4 - Put the new reference in the main theme file platform/android/res/values/monTheme.xml
+**4 - Put the new reference in the main theme file** platform/android/res/values/monTheme.xml
 
+```
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <style name="monTheme" parent="@style/Theme.AppCompat">
@@ -132,3 +138,4 @@ Fill the xml file like below :
             <item name="android:background">@drawable/tab_bar_background</item>
             <item name="background">@drawable/tab_bar_background</item>
 </style> 
+```
