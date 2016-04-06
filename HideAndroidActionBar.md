@@ -1,8 +1,8 @@
-/**
- * Hide Android ActionBar from specific window
- */
+##Hide Android ActionBar from specific window
  
-// First, create custom style in Android style.xml file
+First step consist in create custom style in Android style.xml file
+
+```
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.NoActionBar" parent="@style/Theme.AppCompat">
@@ -14,8 +14,11 @@
         <item name="windowNoTitle">false</item>
     </style>
 </resources>
+```
 
-// Next, apply this custom theme in the specific window tss file
+Then, apply this custom theme in the specific window tss file
+```
 "Window[platform=android]" : {
     theme: 'Theme.NoActionBar'
 }
+```
