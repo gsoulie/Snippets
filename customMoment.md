@@ -1,13 +1,17 @@
-/**
- * This document show how to customize momentJS library with wanted locales values
- */
+##Customize momentJS library
 
-// Basically, you can use MomentJS library in Titanium with
+How to use custom locales values with MomentJS
+
+Basically, you can use MomentJS library in Titanium with
+
+```
 var m = require('alloy/moment');
+```
+But, by default, dates and hours are display with US format. You can also declare custom locales with the following code (in alloy.js):
 
-// But, by default, dates and hours are display with US format. You can also declare custom locales with the following code (in alloy.js):
+####Create french locale values
 
-// Create french locale values
+```
 Alloy.Globals.MomentLocaleFR= {
     months : "Janvier_Février_Mars_Avril_Mai_Juin_Juillet_Août_Septembre_Octobre_Novembre_Décembre".split("_"),
     monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
@@ -52,12 +56,15 @@ Alloy.Globals.MomentLocaleFR= {
         doy : 4  // The week that contains Jan 4th is the first week of the year.
     }
 };
+```
 
+####Usage in controllers
 
-// Next you can use it in your controllers as :
+```
 var Moment = require('alloy/moment');
 Moment.locale('fr',Alloy.Globals.MomentLocaleFR);
 
 var myDate = Moment().format("dddd D MMMM YYYY"); // display Lundi 1 Septembre 2014
+```
 
-// Find more documentation on : http://momentjs.com/docs/#/customization/
+[Find more documentation here](http://momentjs.com/docs/#/customization/)
