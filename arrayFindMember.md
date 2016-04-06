@@ -1,8 +1,8 @@
-/**
- * This document sho how to find an element on a complex array.
- * note : you can find similar functions in underscoreJS lib or JQuery but it can be more light to import this only function to your project
- */
+##Find element in complex array
 
+**note:** you can find similar functions in underscoreJS lib or JQuery but it can be more light to import this only function to your project
+ 
+```
 /**
  *@param{String}    _searchID : value to find
  *@param{String}    _myArray : array
@@ -17,3 +17,4 @@ function arraySearch(_searchID, _myArray, _rubID){
     };
     return -1;
 };
+```
