@@ -1,16 +1,15 @@
-/**
- * In this document we are going to see how to create Alloy Migration in your Titanium project. Alloy Migration gives informations to your app on the Alloy Model version. It
- * provides initial Alloy Model structure state before migration and new state after migration.
- * For all Alloy Model structure modification in your app, you need to create Alloy Migration if your application is already deployed (on store or device).
- * If you don't create Alloy Migration, your app is going to crash for the next use.
- */
+##Alloy migration
 
-/**
- * In this example, we are going to add new column in Book Alloy Model
- */
+In this document we are going to see how to create Alloy Migration in your Titanium project. Alloy Migration gives informations to your app on the Alloy Model version. It
+provides initial Alloy Model structure state before migration and new state after migration.
+For all Alloy Model structure modification in your app, you need to create Alloy Migration if your application is already deployed (on store or device).
+If you don't create Alloy Migration, your app is going to crash for the next use.
 
-// Fisrt, consider the following Book Model :
+In this example, we are going to add new column in Book Alloy Model
 
+####Step 1 : consider the following Book Model
+
+```
 // Book.js
 exports.definition = {
     config: {
@@ -39,12 +38,11 @@ exports.definition = {
         return Collection;
     }
 };
+```
 
-
-/**
- * Step 2 : add new "author" column to Book model
- */
-
+####Step 2 : add new "author" column to Book model
+ 
+```
 // Book.js
 exports.definition = {
     config: {
@@ -55,11 +53,11 @@ exports.definition = {
         },
         ...
 };
+```
 
-/**
- * Step 3 : Alloy Migration creation
- */
+####Step 3 : Alloy Migration creation
 
+```
 /* Right click on your project --> new --> Alloy migration
  * You're invite to enter the Migration file's name. You must use the same name that the associated Alloy Model, in our case "Book".
  * Next you will see new folder "migration" in your project three, containing the migration's new file named like "201502041121584_Book.js"
@@ -75,11 +73,11 @@ migration.down = function(db) {
 };
 
 // The migration.up function describe the Alloy Model updgrade afeter migration play. And migration.down describe the Alloy Model initial state before migration playing
+```
 
-/**
- * Step 4 : Fill the migration file
- */
-
+####Step 4 : Fill the migration file
+ 
+```
 migration.up = function(migrator) {
     // We want to add "author" column after migration
     migrator.db.execute('ALTER TABLE ' + migrator.table + ' ADD COLUMN author TEXT;');
@@ -108,13 +106,11 @@ migration.down = function(migrator) {
  * Next, we delete the current Book Model to free data and we immedialty recreate it with the content of the tempory table.
  * Finally we delete the tempory table
  */
+```
 
+###Other example - new table creation
 
-/*
- * ---------------------------------- OTHER EXAMPLE ----------------------------------------
- * new table creation
- */
-
+```
 // Model File creation
 exports.definition = {
         config: {
@@ -145,8 +141,9 @@ exports.definition = {
                 return Collection;
         }
 };
+```
 
-
+```
 // Migration
 migration.up = function(migrator) {
         migrator.db.execute('CREATE TABLE '+ migrator.table + ' (alloy_id,guid,type,message)');
@@ -155,3 +152,4 @@ migration.up = function(migrator) {
 migration.down = function(migrator) {
         migrator.db.execute('DROP TABLE ' + migrator.table);
 };
+```
