@@ -100,13 +100,13 @@ migration.down = function(migrator) {
     db.execute('DROP TABLE book_backup;');
 };
 
-/**
- * migration.down explaination
- * In this function, we are going to create tempory table which contains the initial structure of Book model.
- * Next, we delete the current Book Model to free data and we immedialty recreate it with the content of the tempory table.
- * Finally we delete the tempory table
- */
 ```
+
+**migration.down explaination**
+
+In this function, we are going to create tempory table which contains the initial structure of Book model.
+Then, we delete the current Book Model to free data and we immedialty recreate it with the content of the tempory table. And finally we delete the tempory table
+
 
 ###Other example - new table creation
 
