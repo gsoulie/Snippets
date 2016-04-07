@@ -1,10 +1,9 @@
-/**
- * This document show how to reach the next field on iOS when returnKeyType : Titanium.UI.RETURNKEY_NEXT is out on iOS
- *
- * To solve this problem, there is a hook, it consist in create array containing the list of textField / textArea in the needed order.
- * Next, we are going to browse the list, and for each field we are going to update it's return event with the next field to focus
- */
+##Skip to next field on iOS
 
+Before **Titanium.UI.RETURNKEY_NEXT** property is available on iOS, the hook consist in create array containing the list of textField / textArea in the needed order.
+Then, we are going to browse the list, and for each field we are going to update it's return event with the next field to focus
+
+```
 function nextField (controllers) {
     if (OS_IOS) {
         for(var i in controllers) {
@@ -22,9 +21,11 @@ function nextField (controllers) {
         }
     }
 };
+```
 
-
-// In your controller, add the following code :
+**Usage in controller file**
+```
 nextField([$.firstName, $.lastName, $.addressField,$.cpField,$.cityField,$.emailField,$.assureFirstNameField,$.assureLastNameField]);
+```
 
-// Note : you need to set the returnKeyType parameter to Titanium.UI.RETURNKEY_NEXT in your tss (or xml) file
+**Note:** you need to set the ```returnKeyType``` parameter to ```Titanium.UI.RETURNKEY_NEXT``` in your tss (or xml) file
