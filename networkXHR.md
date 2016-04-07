@@ -1,9 +1,6 @@
 ##Generic HTTP request lib
 
-/**
- * Generic HTTP request function to create on lib like network.js
- */
-
+####network.js
 ```
 /**
  * Standard HTTP Request
