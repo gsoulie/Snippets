@@ -1,15 +1,14 @@
-/**
- * This document show how to create infinite scrollableView (using only 3 sub view) to display date in our example.
- * The scrollableView is composed with 3 view, the first to display the previous day, the second to display the current day and the third to display next day.
- * source : https://gist.github.com/dawsontoth/810171
- */
+##Infinite ScrollableView
 
+This snippet show how to create infinite scrollableView (using only 3 sub view) to display date in our example.
+The scrollableView is composed with 3 view, the first to display the previous day, the second to display the current day and the third to display next day.
 
+[source code](https://gist.github.com/dawsontoth/810171)
 
-/**
- * We're going to create an infinite scrollable list. In this case, we're going to show a date. When you swipe left,
- * you'll see yesterday. Then the day before yesterday, and so on. Swiping right shows you tomorrow, and so on.
- */
+We're going to create an infinite scrollable list. In this case, we're going to show a date. When you swipe left,
+you'll see yesterday. Then the day before yesterday, and so on. Swiping right shows you tomorrow, and so on.
+
+```
 var win = Ti.UI.createWindow({ backgroundColor: '#fff' });
 var isAndroid = Ti.Platform.osname === 'android';
 /**
@@ -116,16 +115,12 @@ loadView(containers[2], new Date(currentDate.getTime() + msIntervalBetweenViews)
  * That's it, we just need to open the window! Hope you enjoyed this.
  */
 win.open();
+```
 
 
+###Project sample code
 
-
-
-
-/*******************************************************************
- * Sample from project
- **/
- 
+```
 var position = 0, items = [];
 
 var currentDate = new Date(), msIntervalBetweenViews = 1000/*ms*/ * 60/*s*/ * 60/*m*/ * 24/*h*/;
@@ -276,4 +271,4 @@ function scrollListener(evt) {
     RefreshDataSet();
 };
 $.dateScrollableView.addEventListener('scrollend', scrollListener);
-
+```
