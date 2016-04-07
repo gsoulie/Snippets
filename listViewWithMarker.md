@@ -1,11 +1,12 @@
-/**
- * This code show how to load listView data with marker (with or without rupture)
- * In this example we are going to load Person's list (10 to 10) based on the Alloy model (id(auto increment), firstName, lastName).
- * The list will be ordered on firstName with rupture on the first letter.
- */
+##Infinite listView scrolling using markers
 
+This snippet show how to load listView data with marker (with or without rupture)
+In this example we are going to load Person's list (10 to 10) based on the Alloy model (id(auto increment), firstName, lastName).
+The list will be ordered on firstName with rupture on the first letter.
 
-// List.xml
+####View file
+
+```
 <Alloy>
         <Window backgroundColor="#e6e6e6">
                 <View id="container">
@@ -21,10 +22,11 @@
                 </View>
         </Window>
 </Alloy>
+```
 
+####Controller file
 
-// List.js
-
+```
 var args = arguments[0] || {};
 var position = 0, currentLetter;
 
@@ -238,15 +240,12 @@ $.personneListe.addEventListener('marker', function(e) {
     position += 10;  // Marker position increase
     getPersonne(position);
 });
+```
 
+####Case of listview without rupture
 
-/**
- * Case of listview without rupture
- */
-
-
-// Just change fillList function to :
-
+Just change **fillList** function to :
+```
 function fillList(_data){
 
     for(var i = 0 ; i < _data.length; i++){
@@ -256,3 +255,4 @@ function fillList(_data){
 
      addListMarker();
 };
+```
