@@ -1,12 +1,9 @@
-/**
- *  Widget for scrollableView used as tutorial frame
- */
- 
- 
- /**
-  * View file
-  */
-  
+##Generic scrollableView widget
+
+Very useful for creating tutorial frame
+
+####View file
+```
 <Alloy>
 	<!-- iOS -->
 	<NavigationWindow platform="ios">
@@ -30,15 +27,15 @@
 		</View>
 	</Window>
 </Alloy>
+```
 
-/**
- * Controller file
- */
- 
+####Controller file
+```
 var pageCount = 0,
     nextButtonTitle = "NEXT",
     doneButtonTitle = "DONE",
     closeCallback;
+    
 /**
  * 
  * @param {String}  _args.pagingControlBackground :
@@ -50,6 +47,7 @@ var pageCount = 0,
  * @param {String}  _args.nextButtonTitle : 
  * @param {Function}_args.closeCallback : callback function play on done, skip buttons
  */
+ 
 exports.init = function(_args){
     $.tutorial.backgroundColor = _args.backgroundColor || "#ffffff";
     $.pagingControl.backgroundColor = "#00adef";
@@ -173,14 +171,12 @@ $.cleanup = function cleanup() {
 };
 
 $.tutorial.addEventListener('close', $.cleanup);
+```
 
 
 
-
-/**
- * Style file
- */
- 
+####Style file
+```
  "Window": {
 	backgroundColor: Alloy.Globals.grey,
 	orientationModes: [Titanium.UI.PORTRAIT,Titanium.UI.UPSIDE_PORTRAIT]
@@ -234,55 +230,54 @@ $.tutorial.addEventListener('close', $.cleanup);
 		fontSize: "11sp"
 	}
 }
+```
 
 
 
-
-/**
- * Using from another controller
- */
- 
- <Alloy>
+####Usage (from another controller)
+```
+<Alloy>
 	<Window width="Ti.UI.FILL" height="Ti.UI.FILL" backgroundColor="#fff" fullscreen="true"/>
 	<Widget src="com.isiapps.tutorialframe" id="tutorial"/>
 </Alloy>
+```
 
+```
+var page1 = Ti.UI.createView({
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: "#ffcc00"
+});
+var labelPage1 = Ti.UI.createLabel({text:"Page 1"});
+page1.add(labelPage1);
 
- var page1 = Ti.UI.createView({
-        height: Ti.UI.FILL,
-        width: Ti.UI.FILL,
-        backgroundColor: "#ffcc00"
-    });
-    var labelPage1 = Ti.UI.createLabel({text:"Page 1"});
-    page1.add(labelPage1);
-    
-    var page2 = Ti.UI.createView({
-        height: Ti.UI.FILL,
-        width: Ti.UI.FILL,
-        backgroundColor: "#22cc11"
-    });
-    var labelPage2 = Ti.UI.createLabel({text:"Page 2"});
-    page2.add(labelPage2);
-    
-    var page3 = Ti.UI.createView({
-        height: Ti.UI.FILL,
-        width: Ti.UI.FILL,
-        backgroundColor: "#aa33cc"
-    });
-    var labelPage3 = Ti.UI.createLabel({text:"Page 3"});
-    page3.add(labelPage3);
-    
-    var page4 = Ti.UI.createView({
-        height: Ti.UI.FILL,
-        width: Ti.UI.FILL,
-        backgroundColor: "#e5b4f2"
-    });
-    var labelPage4 = Ti.UI.createLabel({text:"Page 4"});
-    page4.add(labelPage4);
-    
-    $.tutorial.init({
-       content: [page1,page2,page3,page4] 
-    });
-    
-    $.tutorial.open();
- 
+var page2 = Ti.UI.createView({
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: "#22cc11"
+});
+var labelPage2 = Ti.UI.createLabel({text:"Page 2"});
+page2.add(labelPage2);
+
+var page3 = Ti.UI.createView({
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: "#aa33cc"
+});
+var labelPage3 = Ti.UI.createLabel({text:"Page 3"});
+page3.add(labelPage3);
+
+var page4 = Ti.UI.createView({
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+	backgroundColor: "#e5b4f2"
+});
+var labelPage4 = Ti.UI.createLabel({text:"Page 4"});
+page4.add(labelPage4);
+
+$.tutorial.init({
+	content: [page1,page2,page3,page4] 
+});
+
+$.tutorial.open();
+``` 
