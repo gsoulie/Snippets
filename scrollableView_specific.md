@@ -1,11 +1,7 @@
-/**
- * Widget for scrollableView
- */
+##Specific scrollableView widget
  
- /**
-  * View file
-  */
-  
+####View file
+```
   <Alloy>
 	<Window id="tutorial">
 		<ScrollableView id="container">
@@ -30,12 +26,11 @@
 		</View>
 	</Window>
 </Alloy>
+```
 
-
-/**
- * Controller file
- */
+####Controller file
  
+``` 
  var pageCount = 0;
 /**
  * 
@@ -123,12 +118,11 @@ $.done.addEventListener('click', function(){
         $.tutorial.close();
     }
 });
+```
 
+####Style file
 
-/**
- * Style file
- */
- 
+``` 
  "Window": {
 	orientationModes: [Titanium.UI.PORTRAIT,Titanium.UI.UPSIDE_PORTRAIT]
 }
@@ -181,3 +175,4 @@ $.done.addEventListener('click', function(){
 		fontSize: "12sp"
 	}
 }
+```
