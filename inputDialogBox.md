@@ -1,15 +1,19 @@
-/**
- * This document show how to create input dialogBox on Android by using androidView property of createAlertDialog native function
- */
+##Android input dialog box
 
-// view textInput.xml
+This snippet show how to create input dialogBox on Android by using **androidView** property of **createAlertDialog** native function
+ 
+####View file
+
+```
 <Alloy>
         <View id="textSaisie" class="container">
                 <TextArea id ="saisie"/>
         </View>
 </Alloy>
+```
 
-// style textInput.tss
+####Style file
+```
 ".container" : { },
 "#textSaisie" : { },
 "#saisie" : {
@@ -24,8 +28,10 @@
         backgroundColor: "#36373a",
         keyboardType: Titanium.UI.KEYBOARD_DEFAULT
 }
+```
 
-// controller textInput.js
+####COntroller file
+```
 var args = arguments[0] || {};
 $.saisie.value = args.saisieEnCours;
 
@@ -57,3 +63,4 @@ function arraySearch(_searchID, _myArray){
     };
     return -1;
 };
+```
