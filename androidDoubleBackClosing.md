@@ -1,9 +1,8 @@
-/**
- *  this code show how to use double back to exit application on Android
- */
+##Android double back to close application
 
-// First, insert the code below in your main controller (tabGroup controller for example) :
+Insert the code below in your main controller (tabGroup controller for example) :
 
+```
 var firstTap, secondTap;
 
 $.Main.addEventListener("androidback",function(e){
@@ -25,3 +24,4 @@ $.Main.addEventListener("androidback",function(e){
          }
 
  });
+```
