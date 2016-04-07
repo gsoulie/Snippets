@@ -1,13 +1,13 @@
-/**
- * based on http://fokkezb.nl/2013/08/26/url-schemes-for-ios-and-android-1/ tutorial,
- * this snippet show how to interact between 2 mobile applications
- */
+##Url scheme interaction between 2 mobile apps
+
+[based on http://fokkezb.nl/2013/08/26/url-schemes-for-ios-and-android-1/ tutorial](http://fokkezb.nl/2013/08/26/url-schemes-for-ios-and-android-1/),
  
-/*
- * 1 - you have to declare some instruction in the tiapp.xml of your target application, specially the scheme parameter
- */
- 
- // MyApp2
+###Step 1
+
+You have to declare some instruction in the tiapp.xml of your target application, specially the scheme parameter
+
+**MyApp2**
+```
  <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
             <uses-sdk android:minSdkVersion="15"/>
@@ -32,13 +32,14 @@
          </application>
         </manifest>
     </android>
-  
-/*  
- * 2 - Make your call on your first app
- */
+```  
+
+###Step 2 - Make your call on your first app
+
    
-  // MyApp1
-  
+**MyApp1**
+
+```  
   if(OS_ANDROID){
     var myIntent = Ti.Android.createIntent({
       action: Ti.Android.ACTION_MAIN,
@@ -51,11 +52,10 @@
     myIntent.addCategory(Ti.Android.CATEGORY_LAUNCHER);
     Ti.Android.currentActivity.startActivity(myIntent);
     
-    
-/*
- * 3 - Then, retrieve parameters on the target app
- */
-     
+```    
+###Step 3 - Retrieve parameters on the target app
+
+```     
 var activity = Ti.Android.currentActivity;
 var data = activity.getIntent().getData();
 if(data){
@@ -87,3 +87,4 @@ function processArgs() {
 
 // on launch
 processArgs();
+```
