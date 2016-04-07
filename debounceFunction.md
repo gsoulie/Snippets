@@ -1,4 +1,4 @@
-##Mutliple click fireing events preventing
+##Mutliple click preventing
 
 Function to prevent multiple click fireing events
 
