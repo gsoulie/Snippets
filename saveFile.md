@@ -1,5 +1,6 @@
-// There is a generic function to save file on device
+##SaveFile generic lib
 
+```
 /**
  * File : Save file
  *
@@ -50,3 +51,4 @@ File.saveFile = function(_args) {
                 return file.nativePath;
         }
 };
+```
