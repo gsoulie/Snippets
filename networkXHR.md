@@ -1,7 +1,10 @@
+##Generic HTTP request lib
+
 /**
  * Generic HTTP request function to create on lib like network.js
  */
 
+```
 /**
  * Standard HTTP Request
  *
@@ -115,3 +118,4 @@ exports.request = function(_params) {
                 alert('No network available');
         }
 };
+```
