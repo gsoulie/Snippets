@@ -30,7 +30,7 @@ This snippet show how to create input dialogBox on Android by using **androidVie
 }
 ```
 
-####COntroller file
+####Controller file
 ```
 var args = arguments[0] || {};
 $.saisie.value = args.saisieEnCours;
