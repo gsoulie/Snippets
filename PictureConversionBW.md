@@ -109,3 +109,7 @@ var canvas = Ti.UI.createWebView({        // Create a webView
 win.add(canvas);
 win.open();
 ```
+
+##More settings
+
+[grayscale algorithm](http://www.tannerhelland.com/3643/grayscale-image-algorithm-vb6/)
