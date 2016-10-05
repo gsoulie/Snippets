@@ -18,3 +18,10 @@ function arraySearch(_searchID, _myArray, _rubID){
     return -1;
 };
 ```
+
+Or other method
+
+```
+var index = _.indexOf(_.pluck(myArray,'guid'), myGuid);
+```
+
