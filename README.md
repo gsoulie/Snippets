@@ -11,6 +11,7 @@
   * [Hide ActionBar](https://github.com/gsoulie/Snippets/blob/master/HideAndroidActionBar.md)    
   * [Double back closing](https://github.com/gsoulie/Snippets/blob/master/androidDoubleBackClosing.md)    
   * [urlScheme](https://github.com/gsoulie/Snippets/blob/master/urlScheme_Android.md)    
+  * [Input Dialog Box](https://github.com/gsoulie/Snippets/blob/master/inputDialogBox.md)    
 * iOS    
   * [Go to next field](https://github.com/gsoulie/Snippets/blob/master/iOSnextField.md)    
   * [Photo zooming](https://github.com/gsoulie/Snippets/blob/master/iOSphotoZooming.md)    
@@ -19,7 +20,6 @@
 * UI components   
   * [Birthdate field](https://github.com/gsoulie/Snippets/blob/master/birthdate_field.md)    
   * [Infinite date ScrollView](https://github.com/gsoulie/Snippets/blob/master/infiniteDateScrollableView.md)    
-  * [Input Dialog Box](https://github.com/gsoulie/Snippets/blob/master/inputDialogBox.md)    
   * [Phone field input mask](https://github.com/gsoulie/Snippets/blob/master/phoneFieldInputMask.md)    
   * [ListView with marker](https://github.com/gsoulie/Snippets/blob/master/listViewWithMarker.md)    
   * [ScrollableView generic](https://github.com/gsoulie/Snippets/blob/master/scrollableView_generic.md)    
