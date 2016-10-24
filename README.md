@@ -12,6 +12,7 @@
   * [Double back closing](https://github.com/gsoulie/Snippets/blob/master/androidDoubleBackClosing.md)    
   * [urlScheme](https://github.com/gsoulie/Snippets/blob/master/urlScheme_Android.md)    
   * [Input Dialog Box](https://github.com/gsoulie/Snippets/blob/master/inputDialogBox.md)    
+  * [Google MAP API key](https://github.com/gsoulie/Snippets/blob/master/googleMap.md)
 * iOS    
   * [Go to next field](https://github.com/gsoulie/Snippets/blob/master/iOSnextField.md)    
   * [Photo zooming](https://github.com/gsoulie/Snippets/blob/master/iOSphotoZooming.md)    
