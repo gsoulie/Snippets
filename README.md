@@ -16,6 +16,7 @@
 * iOS    
   * [Go to next field](https://github.com/gsoulie/Snippets/blob/master/iOSnextField.md)    
   * [Photo zooming](https://github.com/gsoulie/Snippets/blob/master/iOSphotoZooming.md)    
+  * [Tabgroup swipe issue](https://github.com/gsoulie/Snippets/blob/master/ios_swipe_issue.md)    
 * CLI  
   * [App build command line](https://github.com/gsoulie/Snippets/blob/master/app_build_command_line.md)  
 * UI components   
