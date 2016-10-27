@@ -26,6 +26,7 @@
   * [ListView with marker](https://github.com/gsoulie/Snippets/blob/master/listViewWithMarker.md)    
   * [ScrollableView generic](https://github.com/gsoulie/Snippets/blob/master/scrollableView_generic.md)    
   * [ScrollableView specific](https://github.com/gsoulie/Snippets/blob/master/scrollableView_specific.md)    
+  * [Return to root](https://github.com/gsoulie/Snippets/blob/master/BackToRootWindow.md)    
 * Functions    
   * [Array find member](https://github.com/gsoulie/Snippets/blob/master/arrayFindMember.md)    
   * [Debounce function](https://github.com/gsoulie/Snippets/blob/master/debounceFunction.md)    
