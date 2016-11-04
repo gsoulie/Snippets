@@ -1,5 +1,11 @@
 #Support Android floating action button
 
+##Gittio modules
+[Floating button](https://github.com/k0sukey/be.k0suke.tifab)
+[Input](https://github.com/NadsonFernando/input-materialdesign-widget)
+
+
+##Other example
 [JIRA ticket](https://jira.appcelerator.org/browse/TIMOB-19431)
 
 ```javascript
