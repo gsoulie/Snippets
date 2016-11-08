@@ -19,6 +19,7 @@
   * [Tabgroup swipe issue](https://github.com/gsoulie/Snippets/blob/master/ios_swipe_issue.md)    
 * CLI  
   * [App build command line](https://github.com/gsoulie/Snippets/blob/master/app_build_command_line.md)  
+  * [Useful CLI commands](https://github.com/gsoulie/Snippets/blob/master/CLI.md)    
 * UI components   
   * [Birthdate field](https://github.com/gsoulie/Snippets/blob/master/birthdate_field.md)    
   * [Infinite date ScrollView](https://github.com/gsoulie/Snippets/blob/master/infiniteDateScrollableView.md)    
