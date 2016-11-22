@@ -39,6 +39,7 @@
   * [Save file](https://github.com/gsoulie/Snippets/blob/master/saveFile.md)    
   * [Screen stack](https://github.com/gsoulie/Snippets/blob/master/screenStack.md)    
 * Events
+  * [Network state change](https://github.com/gsoulie/Snippets/blob/master/Network_state_change.md)    
   * [Resume app]
   ```
      Ti.App.addEventListener('resume',function(e){
