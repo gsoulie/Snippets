@@ -1,4 +1,4 @@
-#Check Network change state
+#Checking Network state change
 
 ```
 // Add change event in main controller for example
