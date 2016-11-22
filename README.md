@@ -38,7 +38,14 @@
   * [Network XHR](https://github.com/gsoulie/Snippets/blob/master/networkXHR.md)    
   * [Save file](https://github.com/gsoulie/Snippets/blob/master/saveFile.md)    
   * [Screen stack](https://github.com/gsoulie/Snippets/blob/master/screenStack.md)    
-* Other    
+* Events
+  * [Resume app]
+  ```
+     Ti.App.addEventListener('resume',function(e){
+   	  	Ti.API.info("app is resuming from the background");
+    	});
+     ```
+* Other   
   * [Appcelerator install from scratch](https://github.com/gsoulie/Snippets/blob/master/appcelerator_installation_from_scratch.md)    
   * [Google X509TrustManager](https://github.com/gsoulie/Snippets/blob/master/X509TrustManager.md)    
   * [Alloy Migration](https://github.com/gsoulie/Snippets/blob/master/alloyMigration.md)    
