@@ -158,7 +158,7 @@ migration.down = function(migrator) {
 
 You may encounter a migration issue like "com.plausiblelabs.pldatabase.error.vendor.string=no such table"
 
-The solution to avoid that is to create a new init migration file with an older date like below to initalize your database :
+The solution to avoid that is to *create a new init migration file* with an *older date* like below to initalize your database :
 
 ```
 migration.up = function(migrator) {
