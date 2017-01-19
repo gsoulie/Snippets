@@ -153,3 +153,43 @@ migration.down = function(migrator) {
         migrator.db.execute('DROP TABLE ' + migrator.table);
 };
 ```
+
+##Migration Issue
+
+You may encounter a migration issue like "com.plausiblelabs.pldatabase.error.vendor.string=no such table"
+
+The solution to avoid that is to create a new init migration file with an older date like below to initalize your database :
+
+```
+migration.up = function(migrator) {
+    migrator.createTable({
+        columns: {
+            "guid": "TEXT PRIMARY KEY",
+            "guidPatient": "TEXT",
+            "dateRapport": "TEXT",
+            "pressionMaxi": "TEXT",
+            "pressionMini": "TEXT",
+            "pouls": "INTEGER",
+            "glycemieMatin": "TEXT",
+            "typeInsulineMatin": "TEXT",
+            "dosageMatin": "TEXT",
+            "glycemieSoir": "TEXT",
+            "typeInsulineSoir": "TEXT",
+            "dosageSoir": "TEXT",
+            "diurese": "TEXT",
+            "uniteDiurese":"INTEGER",
+            "selles":"INTEGER",
+            "quantite":"INTEGER"
+        },
+        adapter: {
+            type: "sql",
+            collection_name: migrator.table,
+            idAttribute:"guid"
+        }
+    });
+};
+
+migration.down = function(migrator) {
+    migrator.dropTable(migrator.table);
+};
+```
