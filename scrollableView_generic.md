@@ -1,9 +1,9 @@
-##Generic scrollableView widget
+## Generic scrollableView widget
 
 Very useful for creating tutorial frame
 
-####View file
-```
+#### View file
+```xml
 <Alloy>
 	<!-- iOS -->
 	<NavigationWindow platform="ios">
@@ -29,8 +29,8 @@ Very useful for creating tutorial frame
 </Alloy>
 ```
 
-####Controller file
-```
+#### Controller file
+```javascript
 var pageCount = 0,
     nextButtonTitle = "NEXT",
     doneButtonTitle = "DONE",
@@ -175,7 +175,7 @@ $.tutorial.addEventListener('close', $.cleanup);
 
 
 
-####Style file
+#### Style file
 ```
  "Window": {
 	backgroundColor: Alloy.Globals.grey,
