@@ -1,4 +1,4 @@
-#Extend Alloy collection
+# Extend Alloy collection
 
 ```javascript
 exports.definition = {
