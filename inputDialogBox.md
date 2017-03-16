@@ -1,10 +1,10 @@
-##Android input dialog box
+## Android input dialog box
 
 This snippet show how to create input dialogBox on Android by using **androidView** property of **createAlertDialog** native function
  
-####View file
+#### View file
 
-```
+```xml
 <Alloy>
         <View id="textSaisie" class="container">
                 <TextArea id ="saisie"/>
@@ -12,8 +12,8 @@ This snippet show how to create input dialogBox on Android by using **androidVie
 </Alloy>
 ```
 
-####Style file
-```
+#### Style file
+```javascript
 ".container" : { },
 "#textSaisie" : { },
 "#saisie" : {
@@ -30,8 +30,8 @@ This snippet show how to create input dialogBox on Android by using **androidVie
 }
 ```
 
-####Controller file
-```
+#### Controller file
+```javascript
 var args = arguments[0] || {};
 $.saisie.value = args.saisieEnCours;
 
