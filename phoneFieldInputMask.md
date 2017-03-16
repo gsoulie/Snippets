@@ -1,4 +1,4 @@
-##Phone field input mask
+## Phone field input mask
 
 On Android, it's very difficult to use custom input masks like phone number field.
 Generally the method consist to use textField change EventListener. But at this day, an issue is remaining on this point.
@@ -6,9 +6,9 @@ You can follow [JIRA ticket](https://jira.appcelerator.org/browse/TIMOB-16176)
 On Android, when you update textField value on the change Event, the new value affectation call change event, creating an infinite loop
 To avoid this bug, there is a hook...
 
-####Snippet to create french phone number (XX XX XX XX XX)
+#### Snippet to create french phone number (XX XX XX XX XX)
 
- ```
+ ```javascript
 function createPhoneField(){
 	var field = Ti.UI.createTextField({
 		hintText: 'Phone Number',
