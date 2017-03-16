@@ -1,9 +1,9 @@
-##Picture's zooming with 2 fingers (iOS)
+## Picture's zooming with 2 fingers (iOS)
 
 This snippet show how to make zoom with 2 fingers on imageView using pinch event listener
  
-####PhotoView.xml
-```
+#### PhotoView.xml
+```xml
 <Alloy>
         <NavigationWindow platform="ios">
                 <Window title="Photo">
@@ -15,8 +15,8 @@ This snippet show how to make zoom with 2 fingers on imageView using pinch event
 </Alloy>
 ```
 
-####PhotoView.tss
-```
+#### PhotoView.tss
+```javascript
 "ScrollView": {
     width:Ti.UI.FILL,
     height:Ti.UI.FILL,
@@ -38,8 +38,8 @@ This snippet show how to make zoom with 2 fingers on imageView using pinch event
 }
 ```
 
-####PhotoView.js
-```
+#### PhotoView.js
+```javascript
 var args = arguments[0] || {};
 
 // Loading image content
