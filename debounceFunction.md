@@ -1,8 +1,8 @@
-##Mutliple click preventing
+## Mutliple click preventing
 
 Function to prevent multiple click fireing events
 
-```
+```javascript
 function debounce(func, threshold, execAsap) {
   var timeout;
 
@@ -24,9 +24,9 @@ function debounce(func, threshold, execAsap) {
 };
 ```
 
-####Usage
+#### Usage
 
-```
+```javascript
 $.listview.addEventLisntener('itemclick',debounce(function(e){
   some code here ...
   },500));
