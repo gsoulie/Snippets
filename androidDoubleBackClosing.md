@@ -1,4 +1,4 @@
-##Android double back to close application
+## Android double back to close application
 
 Insert the code below in your main controller (tabGroup controller for example) :
 
