@@ -1,4 +1,4 @@
-##Hide Android ActionBar from specific window
+## Hide Android ActionBar from specific window
  
 First step consist in create custom style in Android style.xml file
 
