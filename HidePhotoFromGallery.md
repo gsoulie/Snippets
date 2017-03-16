@@ -1,4 +1,4 @@
-##Hide custom photo from native gallery
+## Hide custom photo from native gallery
 
 The workthough consist to create emtpy file named .nomedia. Next, all photo files will be ignored during device scanning
  
