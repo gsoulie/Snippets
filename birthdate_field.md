@@ -1,7 +1,7 @@
-##Snippet for creating birthdate field
+## Snippet for creating birthdate field
 
-####View file
-```
+#### View file
+```xml
 <View class="lineView" id="birthdateView">
 	<Label class="standardLabel">Né(e) le</Label>
 	<View layout="horizontal" right="5" width="Ti.UI.SIZE">
@@ -14,7 +14,7 @@
 </View>
 ```
 
-####Style tss file
+#### Style tss file
 ```
 ".birthday": {
 	backgroundColor:"#ffffff",
@@ -30,9 +30,9 @@
 }
 ```
 
-####Controller file
+#### Controller file
 
-```
+```javascript
 $.day.addEventListener('focus', function(e){$.day.setSelection(0,0); });
 $.day.addEventListener('change', function(e){
     Ti.API.info("SELECTION",e.source.getSelection().length + " / " + e.source.getSelection().location);
