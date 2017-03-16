@@ -1,10 +1,10 @@
-#Back to root window
+# Back to root window
 
-##Use case
+## Use case
 
 We consider that we have a main controller which is a TabGroup with 2 or 3 tabs. Then, by navigating, we open many other modal window. Finally, we want to close all opened window and return on the main Tabgroup.
 
-##Solution
+## Solution
 
 Use the code below to return on the main TabGroup
 
