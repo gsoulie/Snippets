@@ -1,14 +1,14 @@
-#iOS swipe issue on TabGroup
+# iOS swipe issue on TabGroup
 
-##Use case
+## Use case
 
 In this case, we have a Main controller which is a tabgroup. Each tab contains a Window including a Listview, clicking on ListItem open a new Window.
 
-##The issue
+## The issue
 
 From main Tab,doing a swipe (left to right) before clicking on a ListItem will cause trouble on the navbar (making a mix between the main window navbar and the detail window) and freezing the app.
 
-##The solution
+## The solution
 
 To avoid this bug, add to your main Window tss file 
 
