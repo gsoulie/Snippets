@@ -1,7 +1,7 @@
-##Specific scrollableView widget
+## Specific scrollableView widget
  
-####View file
-```
+#### View file
+```xml
   <Alloy>
 	<Window id="tutorial">
 		<ScrollableView id="container">
@@ -28,9 +28,9 @@
 </Alloy>
 ```
 
-####Controller file
+#### Controller file
  
-``` 
+```javascript
  var pageCount = 0;
 /**
  * 
@@ -120,7 +120,7 @@ $.done.addEventListener('click', function(){
 });
 ```
 
-####Style file
+#### Style file
 
 ``` 
  "Window": {
