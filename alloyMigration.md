@@ -1,4 +1,4 @@
-##Alloy migration
+## Alloy migration
 
 In this document we are going to see how to create Alloy Migration in your Titanium project. Alloy Migration gives informations to your app on the Alloy Model version. It
 provides initial Alloy Model structure state before migration and new state after migration.
@@ -7,7 +7,7 @@ If you don't create Alloy Migration, your app is going to crash for the next use
 
 In this example, we are going to add new column in Book Alloy Model
 
-####Step 1 : consider the following Book Model
+#### Step 1 : consider the following Book Model
 
 ```
 // Book.js
@@ -40,7 +40,7 @@ exports.definition = {
 };
 ```
 
-####Step 2 : add new "author" column to Book model
+#### Step 2 : add new "author" column to Book model
  
 ```
 // Book.js
@@ -55,7 +55,7 @@ exports.definition = {
 };
 ```
 
-####Step 3 : Alloy Migration creation
+#### Step 3 : Alloy Migration creation
 
 ```
 /* Right click on your project --> new --> Alloy migration
@@ -75,7 +75,7 @@ migration.down = function(db) {
 // The migration.up function describe the Alloy Model updgrade afeter migration play. And migration.down describe the Alloy Model initial state before migration playing
 ```
 
-####Step 4 : Fill the migration file
+#### Step 4 : Fill the migration file
  
 ```
 migration.up = function(migrator) {
@@ -108,7 +108,7 @@ In this function, we are going to create tempory table which contains the initia
 Then, we delete the current Book Model to free data and we immedialty recreate it with the content of the tempory table. And finally we delete the tempory table
 
 
-###Other example - new table creation
+### Other example - new table creation
 
 ```
 // Model File creation
@@ -154,7 +154,7 @@ migration.down = function(migrator) {
 };
 ```
 
-##Migration Issue
+## Migration Issue
 
 You may encounter a migration issue like *"com.plausiblelabs.pldatabase.error.vendor.string=no such table"*
 
