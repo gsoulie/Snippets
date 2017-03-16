@@ -1,8 +1,8 @@
-#Convert picture to black and white
+# Convert picture to black and white
 
 The goal is to create a html 5 canvas and using a javascript library to adjust RVB values
 
-##HTML 5 content sample
+## HTML 5 content sample
 
 Here is a working sample showing how to use the conversion
 
@@ -55,7 +55,7 @@ Here is a working sample showing how to use the conversion
 </html>     
 ```
 
-##Custom lib
+## Custom lib
 
 First, create a js library containing a function which create the html 5 code and return it
 
@@ -96,7 +96,7 @@ var convertToBnW = function(_file){
 exports.convertToBnW = convertToBnW;
 ```
 
-##Usage
+## Usage
 
 In a controller, call the lib with your picture file in parameter. Here we create a modal window to showing the result.
 
