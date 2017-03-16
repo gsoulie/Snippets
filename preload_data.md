@@ -1,8 +1,8 @@
-#Preload data in your app
+# Preload data in your app
 
 If you are using Alloy models, you can use a migration file to preload data in you're app like below :
 
-```
+```javascript
 app/migrations/20120610049877_book.js
 var preload_data = [
 	{title: 'To Kill a Mockingbird', author:'Harper Lee'},
