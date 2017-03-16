@@ -1,7 +1,7 @@
-##Generic HTTP request lib
+## Generic HTTP request lib
 
-####network.js
-```
+#### network.js
+```javascript
 /**
  * Standard HTTP Request
  *
