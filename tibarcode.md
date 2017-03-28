@@ -345,5 +345,33 @@ window.add(scrollView);
 window.open();
 ```
 
-*Notice* that you have to check for Android camera permission before call barcode scanner. To do this, you have to install first the *ti.permissions* module (don't forget to add its requirement in your tiapp.xml)
+**Notice** that you have to check for Android camera permission before call barcode scanner. To do this, you have to install first the *ti.permissions* module (don't forget to add its requirement in your tiapp.xml)
 
+## More formats
+
+You can manage more code format with those constant :
+
+```
+@Kroll.constant
+	public static final int FORMAT_NONE = 0;
+	@Kroll.constant
+	public static final int FORMAT_QR_CODE = 1;
+	@Kroll.constant
+	public static final int FORMAT_DATA_MATRIX = 2;
+	@Kroll.constant
+	public static final int FORMAT_UPC_E = 3;
+	@Kroll.constant
+	public static final int FORMAT_UPC_A = 4;
+	@Kroll.constant
+	public static final int FORMAT_EAN_8 = 5;
+	@Kroll.constant
+	public static final int FORMAT_EAN_13 = 6;
+	@Kroll.constant
+	public static final int FORMAT_CODE_128 = 7;
+	@Kroll.constant
+	public static final int FORMAT_CODE_39 = 8;
+	@Kroll.constant
+	public static final int FORMAT_ITF = 9;
+```
+
+See more at https://github.com/Exygy/Titanium-Ti.Barcode/blob/master/mobile/android/src/ti/barcode/BarcodeModule.java
