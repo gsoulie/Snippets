@@ -4,7 +4,7 @@ Here is a sample of using of ti.barcode module (iOS / Android)
 
 ## Get ti.barcode module for each platform
 
-ti.barcode module is available on gittio or here => [https://github.com/appcelerator-labs/appc-liveviewer-app/tree/master/modules)    
+ti.barcode module is available on gittio or here => https://github.com/appcelerator-labs/appc-liveviewer-app/tree/master/modules    
 
 Donwload it and install it by unzip it and copy it in your project. Then add the correct dependency in your **tiapp.xml**
 
