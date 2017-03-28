@@ -28,6 +28,7 @@
   * [ScrollableView generic](https://github.com/gsoulie/Snippets/blob/master/scrollableView_generic.md)    
   * [ScrollableView specific](https://github.com/gsoulie/Snippets/blob/master/scrollableView_specific.md)    
   * [Return to root](https://github.com/gsoulie/Snippets/blob/master/BackToRootWindow.md)    
+  * [ti.barcode](https://github.com/gsoulie/Snippets/blob/master/tibarcode.md)    
 * Functions    
   * [Array find member](https://github.com/gsoulie/Snippets/blob/master/arrayFindMember.md)    
   * [Debounce function](https://github.com/gsoulie/Snippets/blob/master/debounceFunction.md)    
@@ -55,4 +56,5 @@
 * Other   
   * [Appcelerator install from scratch](https://github.com/gsoulie/Snippets/blob/master/appcelerator_installation_from_scratch.md)    
   * [Google X509TrustManager](https://github.com/gsoulie/Snippets/blob/master/X509TrustManager.md)    
-* [Modules](https://github.com/gsoulie/Snippets/blob/master/useful_modules.md)    
+* [Modules](https://github.com/gsoulie/Snippets/blob/master/useful_modules.md)   
+
