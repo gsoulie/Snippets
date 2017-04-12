@@ -11,3 +11,8 @@ $ appc ti sdk install 5.1.2.GA -d
 appc logout -D
 appc login
 ```
+## Other CLI commands
+
+```
+appc info
+```
