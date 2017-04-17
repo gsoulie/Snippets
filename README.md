@@ -39,6 +39,7 @@
   * [Network XHR](https://github.com/gsoulie/Snippets/blob/master/networkXHR.md)    
   * [Save file](https://github.com/gsoulie/Snippets/blob/master/saveFile.md)    
   * [Screen stack](https://github.com/gsoulie/Snippets/blob/master/screenStack.md)    
+  * [Permissions](https://github.com/gsoulie/Snippets/blob/master/permission.md)    
 * Events
   * [Network state change](https://github.com/gsoulie/Snippets/blob/master/Network_state_change.md)    
   * [Resume app]
