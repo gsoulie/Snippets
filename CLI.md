@@ -16,3 +16,15 @@ appc login
 ```
 appc info
 ```
+## Updating Appcelerator CLI
+
+```
+sudo npm install -g appcelerator
+appc setup
+```
+
+## Updating Alloy
+
+```
+sudo npm install -g alloy
+```
