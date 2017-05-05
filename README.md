@@ -56,6 +56,7 @@
   * [UI library](https://github.com/gsoulie/Snippets/blob/master/UI.js)    
 * Other   
   * [Appcelerator install from scratch](https://github.com/gsoulie/Snippets/blob/master/appcelerator_installation_from_scratch.md)    
-  * [Google X509TrustManager](https://github.com/gsoulie/Snippets/blob/master/X509TrustManager.md)    
+  * [Google X509TrustManager](https://github.com/gsoulie/Snippets/blob/master/X509TrustManager.md) 
+  * [Using Promises with Titanium](http://adampaxton.com/using-javascript-promises-in-appcelerator-titanium/)    
 * [Modules](https://github.com/gsoulie/Snippets/blob/master/useful_modules.md)   
 
