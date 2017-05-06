@@ -24,4 +24,21 @@ Or other method
 ```javascript
 var index = _.indexOf(_.pluck(myArray,'guid'), myGuid);
 ```
+### Sort object array
 
+```javascript
+function predicateBy(prop){
+   return function(a,b){
+      if( a[prop] > b[prop]){
+          return 1;
+      }else if( a[prop] < b[prop] ){
+          return -1;
+      }
+      return 0;
+   }
+}
+
+//Usage
+yourArray.sort( predicateBy("age") );
+yourArray.sort( predicateBy("name") );
+```
