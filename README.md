@@ -30,7 +30,7 @@
   * [Return to root](https://github.com/gsoulie/Snippets/blob/master/BackToRootWindow.md)    
   * [ti.barcode](https://github.com/gsoulie/Snippets/blob/master/tibarcode.md)    
 * Functions    
-  * [Array find member](https://github.com/gsoulie/Snippets/blob/master/arrayFindMember.md)    
+  * [Array sort and find member](https://github.com/gsoulie/Snippets/blob/master/arrayFindMember.md)    
   * [Debounce function](https://github.com/gsoulie/Snippets/blob/master/debounceFunction.md)    
   * [Generate GUID](https://github.com/gsoulie/Snippets/blob/master/guid.md)    
   * [Hide photo from gallery](https://github.com/gsoulie/Snippets/blob/master/HidePhotoFromGallery.md)  
